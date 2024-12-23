@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '../features/cart/cartSlice';
 
 const Cart = () => {
+  // Busca os itens do carrinho no estado do Redux
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -16,19 +17,17 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <p>Seu carrinho está vazio.</p>
       ) : (
-        <ul>
+        <div className="cart-items">
           {cartItems.map((item) => (
-            <li key={item.id}>
-              <img src={item.imageUrl} alt={item.title} />
-              <div>
-                <h2>{item.title}</h2>
-                <p>Quantidade: {item.quantity}</p>
-                <p>Preço: R$ {(item.price * item.quantity).toFixed(2)}</p>
-              </div>
+            <div key={item.id} className="cart-item">
+              <img src={item.imageUrl} alt={item.title} className="product-image" />
+              <h3>{item.title}</h3>
+              <span>R$ {item.price.toFixed(2)}</span>
+              <span>Quantidade: {item.quantity}</span>
               <button onClick={() => handleRemoveFromCart(item.id)}>Remover</button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

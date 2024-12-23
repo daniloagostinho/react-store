@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container">
         <div className="logo">
           <img src="/logo.png" alt="Full Stack" />
-          <span>EFull Stack</span>
+          <span>Full Stack</span>
         </div>
         <div className="search-bar">
           <input type="text" placeholder="Buscar produtos, marcas e muito mais..." />
